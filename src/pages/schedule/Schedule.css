@@ -1,0 +1,33 @@
+.schedule-page {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 2rem;
+  z-index: 1;
+}
+
+.schedule-content {
+  text-align: center;
+  animation: schedEntrance 0.8s ease-out forwards;
+}
+
+@keyframes schedEntrance {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.schedule-title {
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
+  font-weight: 800;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.schedule-subtitle {
+  font-size: 1rem;
+  letter-spacing: 0.2rem;
+  color: #3600cc;
+  text-transform: uppercase;
+}

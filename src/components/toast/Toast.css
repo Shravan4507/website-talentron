@@ -1,0 +1,138 @@
+.toast-container {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.toast {
+  pointer-events: auto;
+  min-width: 280px;
+  max-width: 400px;
+  background: rgba(15, 15, 15, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 7rem;
+  padding: 1rem 1.25rem;
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  overflow: hidden;
+  animation: toastSlideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+             toastFadeOut 0.4s 2.6s forwards;
+  position: relative;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  touch-action: pan-y; /* Prevent vertical scrolling while swiping horizontally */
+}
+
+@keyframes toastSlideIn {
+  from {
+    transform: translateX(100%) scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes toastFadeOut {
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+.toast-content {
+  padding: 0.2rem 0.5rem;
+}
+
+.toast-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, 
+    var(--accent-color) 0%, 
+    rgba(255, 255, 255, 0.2) 50%,
+    transparent 100%
+  );
+  /* Or a simpler more elegant blend */
+  background: linear-gradient(90deg, var(--accent-color), transparent);
+  box-shadow: 0 0 8px var(--accent-color);
+  width: 100%;
+  transform-origin: left;
+  animation: toastProgress 3s linear forwards;
+  opacity: 0.7;
+}
+
+@keyframes toastProgress {
+  from { transform: scaleX(1); }
+  to { transform: scaleX(0); }
+}
+
+/* Types & Blend Styles */
+.toast-success { --accent-color: #00ff88; }
+.toast-error { --accent-color: #ff4444; }
+.toast-warning { --accent-color: #ffbb00; }
+.toast-info { --accent-color: #33aaff; }
+
+.toast {
+  /* Dynamic Glow & Blend */
+  box-shadow: 
+    0 15px 45px rgba(0, 0, 0, 0.4),
+    inset 6px 0 20px -6px var(--accent-color);
+  border-left: 1px solid rgba(255, 255, 255, 0.1); /* Consistent border all around */
+}
+
+.toast::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 80px;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    rgba(var(--accent-rgb), 0.2) 0%, 
+    transparent 100%
+  );
+  /* Fallback if RGB variable is tricky, using the color directly with opacity */
+  background: linear-gradient(90deg, 
+    var(--accent-color) -150%, 
+    transparent 100%
+  );
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+/* Specific RGB fallbacks for the bleed effect */
+.toast-success { --accent-color: #00ff88; }
+.toast-error { --accent-color: #ff4444; }
+.toast-warning { --accent-color: #ffbb00; }
+.toast-info { --accent-color: #33aaff; }
+
+@media (max-width: 480px) {
+  .toast-container {
+    bottom: 1.5rem;
+    right: 1.25rem;
+    left: 1.25rem;
+    align-items: center;
+  }
+  
+  .toast {
+    width: 100%;
+    min-width: 220px;
+    max-width: 320px;
+    padding: 0.75rem 1.1rem;
+    font-size: 0.85rem;
+  }
+}

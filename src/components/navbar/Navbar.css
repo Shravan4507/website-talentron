@@ -1,0 +1,104 @@
+.navbar {
+  width: 100%;
+  height: 80px; /* Slightly taller for more gradual fade */
+  background: linear-gradient(
+    to bottom, 
+    rgba(0, 0, 0, 0.95) 0%, 
+    rgba(0, 0, 0, 0.7) 40%, 
+    rgba(0, 0, 0, 0.3) 75%, 
+    transparent 100%
+  );
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  transition: all 0.4s ease;
+  border: none;
+  /* border-bottom-left-radius: 3rem; */
+  /* border-bottom-right-radius: 3rem; */
+  box-shadow: none;
+}
+
+.navbar-left, .navbar-right {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.navbar-left {
+  justify-content: space-between; /* Logo at start, links at end */
+}
+
+.navbar-right {
+  justify-content: space-between; /* Links at start, button at end */
+}
+
+.navbar-center {
+  display: flex;
+  justify-content: center;
+  padding: 0 30px; /* Reduced gap to bring links closer */
+}
+
+.navbar-logo {
+  height: 40px;
+}
+
+.navbar-brand-logo {
+  height: 50px;
+}
+
+.desktop-links {
+  display: flex;
+  gap: 25px;
+}
+
+.nav-link {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #ffffff;
+}
+
+.nav-link:active {
+  transform: scale(0.98);
+}
+
+.navbar-login-btn {
+  background-color: #ffffff;
+  color: #000000;
+  border: none;
+  padding: 0.5rem 1.4rem;
+  border-radius: 2rem;
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.navbar-login-btn:active {
+  transform: scale(0.98);
+}
+
+@media (max-width: 1024px) {
+  .navbar {
+    display: none;
+  }
+}

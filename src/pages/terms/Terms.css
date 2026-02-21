@@ -1,0 +1,16 @@
+.terms-page {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 80px 2rem;
+  z-index: 1;
+}
+
+.terms-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.9);
+}

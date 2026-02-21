@@ -1,0 +1,95 @@
+@font-face {
+  font-family: 'Moldie';
+  src: url('/fonts/Moldie Demo.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.outlined {
+  position: relative;
+  display: inline-block;
+  font-family: 'Moldie', sans-serif;
+  font-size: 10vw; /* Adjusted for Moldie's specific proportions */
+  font-weight: normal;
+  letter-spacing: 8px; /* Increased to accommodate stroke */
+  line-height: 1.1;
+  margin: 0;
+  transform: scaleY(1);
+}
+
+.outlined .border {
+  position: absolute;
+  inset: 0;
+  color: transparent;
+  -webkit-text-stroke-width: 15px;
+  -moz-text-stroke-width: 15px;
+  z-index: 1;
+  user-select: text;
+}
+
+.outlined .fill {
+  position: relative;
+  z-index: 2;
+  user-select: text;
+}
+
+/* Small variation for subtitles */
+.outlined.small {
+  font-size: 4.5rem;
+  letter-spacing: 4px;
+}
+
+.outlined.small .border {
+  -webkit-text-stroke-width: 6px;
+  -moz-text-stroke-width: 6px;
+  filter: drop-shadow(0 2px 0 rgba(0,0,0,0.5));
+}
+
+.outlined.small .fill {
+  text-shadow: 0 1px 0 rgba(0,0,0,0.2);
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .outlined {
+    font-size: 12vw;
+    letter-spacing: 4px;
+  }
+
+  .outlined .border {
+    -webkit-text-stroke-width: 10px;
+    -moz-text-stroke-width: 10px;
+  }
+
+  .outlined.small {
+    font-size: 3rem;
+    letter-spacing: 3px;
+  }
+
+  .outlined.small .border {
+    -webkit-text-stroke-width: 5px;
+    -moz-text-stroke-width: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .outlined {
+    font-size: 14vw;
+    letter-spacing: 2px;
+  }
+
+  .outlined .border {
+    -webkit-text-stroke-width: 8px;
+    -moz-text-stroke-width: 8px;
+  }
+
+  .outlined.small {
+    font-size: 2.2rem;
+    letter-spacing: 2px;
+  }
+
+  .outlined.small .border {
+    -webkit-text-stroke-width: 4px;
+    -moz-text-stroke-width: 4px;
+  }
+}

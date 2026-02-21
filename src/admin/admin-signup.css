@@ -1,0 +1,292 @@
+/* Admin Signup Specific Styles - Reusing Premium User-Signup Design */
+.admin-signup-page {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background: transparent;
+  padding: 120px 2rem 5rem; /* Safe buffer for fixed navbar */
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.admin-signup-bg-glow {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255, 0, 89, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  filter: blur(80px);
+}
+
+.admin-signup-card {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 420px;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 3rem;
+  padding: 3.5rem 3rem;
+  text-align: center;
+  box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.6);
+  animation: adminSignupEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transition: max-width 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.admin-signup-card.form-view {
+  max-width: 900px; /* Expanded for landscape/rectangular layout */
+}
+
+@keyframes adminSignupEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.admin-signup-logo-container {
+  margin-bottom: 2.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.admin-signup-logo {
+  height: 80px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.1));
+}
+
+.admin-signup-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.admin-signup-header h1 {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 800;
+  letter-spacing: -1.5px;
+  margin-bottom: 0.75rem;
+  background: linear-gradient(135deg, #fff 0%, rgba(255, 255, 255, 0.6) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.admin-signup-header p {
+  font-family: var(--font-ui);
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 1rem;
+  letter-spacing: 0.2px;
+}
+
+/* Authentication View Styles */
+.google-signup-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: #ffffff;
+  color: #000000;
+  border: none;
+  padding: 1rem;
+  border-radius: 3rem;
+  font-family: var(--font-ui);
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.google-signup-btn:active {
+  transform: scale(0.98);
+}
+
+.google-icon {
+  width: 22px;
+  height: 22px;
+}
+
+/* Form View Styles - Matching User Signup */
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  text-align: left;
+  animation: formFadeIn 0.5s ease forwards;
+}
+
+@keyframes formFadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.input-group label {
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  margin-left: 0.5rem;
+  letter-spacing: 1.5px;
+}
+
+.input-group input, 
+.input-group select {
+  font-family: var(--font-body);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.9rem 1.25rem;
+  border-radius: 7rem;
+  color: #fff;
+  font-size: 0.95rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.form-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='white' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: calc(100% - 1.25rem) center;
+  padding-right: 3rem !important;
+}
+
+.form-select option {
+  background: #1a1a1a;
+  color: #fff;
+}
+
+.input-group input:focus, 
+.input-group select:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.04);
+  border-color: #ff0059;
+}
+
+.signup-btn {
+  background: #ff0059;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 1.15rem;
+  border-radius: 4rem;
+  font-family: var(--font-ui);
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 2rem;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+}
+
+.signup-btn:active {
+  transform: scale(0.98);
+}
+
+.disabled-input {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background: rgba(255, 255, 255, 0.02) !important;
+  border-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+.disabled-input:focus {
+  border-color: rgba(255, 255, 255, 0.05) !important;
+  background: rgba(255, 255, 255, 0.02) !important;
+}
+
+.admin-signup-footer {
+  margin-top: 2.5rem;
+  text-align: center;
+}
+
+.admin-back-home {
+  color: rgba(255, 255, 255, 0.54);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.admin-back-home:hover {
+  color: #ffffff;
+}
+
+.admin-back-home svg {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.3s ease;
+}
+
+.admin-back-home:hover svg {
+  transform: translateX(-1px);
+}
+
+@media (max-width: 950px) {
+  .admin-signup-card.form-view {
+    max-width: calc(100% - 4rem);
+    padding: 3.5rem 2.5rem;
+  }
+}
+
+@media (max-width: 680px) {
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  
+  .admin-signup-card.form-view {
+    max-width: 95%;
+    padding: 2.5rem 1.75rem;
+    border-radius: 2rem;
+  }
+  
+  .admin-signup-header h1 {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-signup-card {
+    padding: 3rem 1.5rem;
+    border-radius: 2rem;
+  }
+  
+  .admin-signup-header h1 {
+    font-size: 1.75rem;
+  }
+}

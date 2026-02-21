@@ -1,0 +1,66 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Hide scrollbars globally but keep functionality */
+* {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+  -webkit-tap-highlight-color: transparent; /* Remove blue highlight on mobile */
+}
+
+*::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}
+
+@font-face {
+  font-family: 'Teen';
+  src: url('/fonts/teen/Teen.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Teen';
+  src: url('/fonts/teen/Teen Bd.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+:root {
+  /* Font Families */
+  --font-display: 'Teen', sans-serif;
+  --font-body: 'Teen', sans-serif;
+  --font-ui: 'Teen', sans-serif;
+
+  font-family: var(--font-body);
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: dark;
+  color: #ffffff;
+  background-color: #000000;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button, input, textarea, select {
+  font-family: var(--font-ui);
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: #000000;
+  overflow-x: hidden;
+}
+
+#root {
+  width: 100%;
+}

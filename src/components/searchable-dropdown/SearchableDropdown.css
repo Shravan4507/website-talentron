@@ -1,0 +1,194 @@
+.searchable-dropdown {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    position: relative;
+    width: 100%;
+}
+
+.searchable-dropdown label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.6);
+    margin-left: 0.5rem;
+    letter-spacing: 0.05rem;
+}
+
+.searchable-dropdown.read-only label {
+    color: #d3d3d3e6;
+}
+
+.dropdown-container {
+    position: relative;
+    width: 100%;
+}
+
+.dropdown-trigger-wrapper {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.dropdown-trigger-input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 0.9rem 1.25rem;
+    border-radius: 1.2rem;
+    color: #fff;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: inherit;
+}
+
+.dropdown-trigger-input::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.dropdown-container.is-open .dropdown-trigger-input {
+    border-color: #ff0059;
+    background: rgba(255, 255, 255, 0.07);
+    cursor: text;
+}
+
+.dropdown-trigger-input:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.dropdown-trigger-input:focus {
+    outline: none;
+    border-color: #ff0059;
+}
+
+.chevron {
+    position: absolute;
+    right: 1.5rem;
+    width: 20px;
+    height: 20px;
+    opacity: 0.5;
+    transition: transform 0.3s ease;
+    pointer-events: none;
+}
+
+.chevron.up {
+    transform: rotate(180deg);
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 2rem;
+    z-index: 2000;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    animation: dropdownFadeIn 0.2s ease forwards;
+}
+
+@keyframes dropdownFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.options-list {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.options-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.options-list::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.option-item {
+    padding: 1rem 1.5rem;
+    color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 1rem;
+}
+
+.option-item:hover,
+.option-item.focused {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(255, 0, 89, 0.2) 50%, rgba(0, 0, 0, 0) 100%);
+    color: #fff;
+}
+
+.option-item.active {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(255, 0, 89, 0.3) 50%, rgba(0, 0, 0, 0) 100%);
+    color: #ff0059;
+    font-weight: 600;
+}
+
+.manual-entry-divider {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.05);
+    margin: 0.5rem 0;
+}
+
+.manual-entry {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    background: rgba(255, 0, 89, 0.03);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.manual-entry-text {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.4);
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+.manual-entry-subtext {
+    font-size: 0.95rem;
+    color: #ff0059;
+    font-weight: 600;
+}
+
+.no-results-manual {
+    padding: 2rem 1.5rem;
+    text-align: center;
+    background: transparent;
+}
+
+.no-results-text {
+    padding: 2rem 1.5rem;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 1.1rem;
+}
+
+/* Read-only state to match user-dashboard styles */
+.searchable-dropdown.read-only .read-only-input {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    padding: 1rem 1.5rem !important;
+    color: rgba(255, 255, 255, 0.5) !important;
+    cursor: not-allowed;
+    font-weight: 500;
+    font-size: 1.1rem;
+    width: 100%;
+    border-radius: 34px;
+}
