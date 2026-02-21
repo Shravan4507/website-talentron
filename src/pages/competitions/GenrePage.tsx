@@ -4,6 +4,7 @@ import { competitionsData } from '../../data/competitionsData';
 import type { Competition } from '../../data/competitionsData';
 import PopArtCard from '../../components/card/PopArtCard';
 import OutlinedTitle from '../../components/heading/OutlinedTitle';
+import { assetPath } from '../../utils/assetPath';
 import './Genre.css';
 
 const GenrePage: React.FC = () => {
@@ -73,7 +74,7 @@ const GenrePage: React.FC = () => {
                 {filteredCompetitions.map((comp, index) => (
                     <PopArtCard
                         key={index}
-                        backgroundImage="/assets/cards/music.webp"
+                        backgroundImage={assetPath("/assets/cards/music.webp")}
                         footerText={comp.type}
                         onClick={() => handleCompClick(comp)}
                         animationDelay={`${index * 0.05}s`}

@@ -6,6 +6,7 @@ import collegesData from '../data/colleges.json';
 import { majors } from '../data/majors';
 import { GENDER_OPTIONS } from '../components/types/user';
 import { useToast } from '../components/toast/Toast';
+import { assetPath } from '../utils/assetPath';
 
 const UserSignup: React.FC = () => {
   const { showToast } = useToast();
@@ -192,7 +193,7 @@ const UserSignup: React.FC = () => {
       <div className="signup-card">
         <div className="signup-header">
           <img 
-            src="/assets/logos/ZCOER-Logo-White.png" 
+            src={assetPath('/assets/logos/ZCOER-Logo-White.png')}
             alt="ZCOER Logo" 
             className="signup-logo" 
           />

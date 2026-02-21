@@ -1,4 +1,5 @@
 import { useNavigate, Link } from 'react-router-dom';
+import { assetPath } from '../../utils/assetPath';
 import './Navbar.css';
 
 const menuItems = [
@@ -19,7 +20,7 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="navbar-left">
-        <img src="/assets/logos/ZCOER-Logo-White.png" alt="ZCOER Logo" className="navbar-logo" />
+        <img src={assetPath('/assets/logos/ZCOER-Logo-White.png')} alt="ZCOER Logo" className="navbar-logo" />
         <div className="desktop-links links-left">
           {leftLinks.map((item) => (
             <Link key={item.label} to={item.link} className="nav-link">
@@ -30,7 +31,7 @@ const Navbar = () => {
       </div>
       
       <div className="navbar-center">
-        <img src="/assets/logos/talentron-logo.jpg" alt="Talentron Logo" className="navbar-brand-logo" />
+        <img src={assetPath('/assets/logos/talentron-logo.jpg')} alt="Talentron Logo" className="navbar-brand-logo" />
       </div>
 
       <div className="navbar-right">

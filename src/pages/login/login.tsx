@@ -1,4 +1,5 @@
 import React from 'react';
+import { assetPath } from '../../utils/assetPath';
 import './login.css';
 
 const LoginPage: React.FC = () => {
@@ -14,7 +15,7 @@ const LoginPage: React.FC = () => {
       <div className="login-card">
         <div className="login-logo-container">
           <img 
-            src="/assets/logos/ZCOER-Logo-White.png" 
+            src={assetPath('/assets/logos/ZCOER-Logo-White.png')}
             alt="ZCOER Logo" 
             className="login-logo"
             draggable={false}

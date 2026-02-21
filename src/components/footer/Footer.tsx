@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { assetPath } from '../../utils/assetPath';
 import './Footer.css';
 
 const Footer = () => {
@@ -7,7 +8,7 @@ const Footer = () => {
       <div className="footer-content">
         <div className="footer-grid">
           <div className="footer-column">
-            <img src="/assets/logos/talentron-logo.jpg" alt="Talentron Logo" className="footer-brand-logo" />
+            <img src={assetPath('/assets/logos/talentron-logo.jpg')} alt="Talentron Logo" className="footer-brand-logo" />
             <p>Empowering the next generation of digital talent through innovation and technology.</p>
           </div>
           <div className="footer-column">
@@ -45,7 +46,7 @@ const Footer = () => {
 
         <div className="footer-initiative">
           <div className="initiative-logo">
-            <img src="/assets/logos/ZCOER-Logo-White.png" alt="ZCOER Logo" />
+            <img src={assetPath('/assets/logos/ZCOER-Logo-White.png')} alt="ZCOER Logo" />
           </div>
           <div className="initiative-text">
             OFFICIAL STUDENT INITIATIVE OF ZCOER PUNE

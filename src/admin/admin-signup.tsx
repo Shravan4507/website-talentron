@@ -4,6 +4,7 @@ import { majors } from '../data/majors';
 import DatePicker from '../components/date-picker/DatePicker';
 import SearchableDropdown from '../components/searchable-dropdown/SearchableDropdown';
 import { useToast } from '../components/toast/Toast';
+import { assetPath } from '../utils/assetPath';
 
 const ZCOER_COLLEGE = "Zeal Education Society's Zeal College of Engineering & Research, Narhe, Pune";
 
@@ -117,7 +118,7 @@ const AdminSignup: React.FC = () => {
             <div className={`admin-signup-card ${step === 'form' ? 'form-view' : ''}`}>
                 <div className="admin-signup-logo-container">
                     <img
-                        src="/assets/logos/ZCOER-Logo-White.png"
+                        src={assetPath('/assets/logos/ZCOER-Logo-White.png')}
                         alt="ZCOER Logo"
                         className="admin-signup-logo"
                         draggable={false}

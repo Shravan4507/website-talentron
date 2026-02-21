@@ -2,19 +2,20 @@ import { useNavigate } from 'react-router-dom';
 import { competitionsData } from '../../data/competitionsData';
 import PopArtCard from '../../components/card/PopArtCard';
 import OutlinedTitle from '../../components/heading/OutlinedTitle';
+import { assetPath } from '../../utils/assetPath';
 import './Competitions.css';
 
 const getGenreImage = (category: string) => {
     const images: Record<string, string> = {
-        "Singing & Music": "/assets/cards/music.webp",
-        "Dance": "/assets/cards/dance.webp",
-        "Dramatics": "/assets/cards/drama.webp",
-        "Speaking Arts": "/assets/cards/speaking-arts.webp",
-        "Fine Arts": "/assets/cards/fine-arts.webp",
-        "Digital Arts": "/assets/cards/digital-arts.webp",
-        "Fashion & Lifestyle": "/assets/cards/fashion-lifestyle.webp",
+        "Singing & Music": assetPath("/assets/cards/music.webp"),
+        "Dance": assetPath("/assets/cards/dance.webp"),
+        "Dramatics": assetPath("/assets/cards/drama.webp"),
+        "Speaking Arts": assetPath("/assets/cards/speaking-arts.webp"),
+        "Fine Arts": assetPath("/assets/cards/fine-arts.webp"),
+        "Digital Arts": assetPath("/assets/cards/digital-arts.webp"),
+        "Fashion & Lifestyle": assetPath("/assets/cards/fashion-lifestyle.webp"),
     };
-    return images[category] || "/assets/cards/music.webp";
+    return images[category] || assetPath("/assets/cards/music.webp");
 };
 
 const Competitions: React.FC = () => {

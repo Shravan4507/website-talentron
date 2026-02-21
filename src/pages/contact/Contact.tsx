@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useToast } from '../../components/toast/Toast';
+import { assetPath } from '../../utils/assetPath';
 import './Contact.css';
 
 const Contact: React.FC = () => {
@@ -108,7 +109,7 @@ const Contact: React.FC = () => {
                 <div className="info-sidebar">
                     <div className="info-item">
                         <div className="info-icon">
-                            <img src="/assets/icons/location.png" alt="Location" style={{width: 28, height: 28}} />
+                            <img src={assetPath('/assets/icons/location.png')} alt="Location" style={{width: 28, height: 28}} />
                         </div>
                         <div className="info-text">
                             <h4>Location</h4>
@@ -118,7 +119,7 @@ const Contact: React.FC = () => {
 
                     <div className="info-item">
                         <div className="info-icon">
-                            <img src="/assets/icons/envelope.png" alt="Email" style={{width: 28, height: 28}} />
+                            <img src={assetPath('/assets/icons/envelope.png')} alt="Email" style={{width: 28, height: 28}} />
                         </div>
                         <div className="info-text">
                             <h4>Email Us</h4>
@@ -128,7 +129,7 @@ const Contact: React.FC = () => {
 
                     <div className="info-item">
                         <div className="info-icon">
-                            <img src="/assets/icons/phone.png" alt="Phone" style={{width: 28, height: 28}} />
+                            <img src={assetPath('/assets/icons/phone.png')} alt="Phone" style={{width: 28, height: 28}} />
                         </div>
                         <div className="info-text">
                             <h4>Call Us</h4>
@@ -140,13 +141,13 @@ const Contact: React.FC = () => {
                         <h4>Join the Community</h4>
                         <div className="social-links-grid">
                             <a href="#" className="social-pill instagram">
-                                <img src="/assets/icons/instagram.png" alt="Instagram" />
+                                <img src={assetPath('/assets/icons/instagram.png')} alt="Instagram" />
                             </a>
                             <a href="#" className="social-pill whatsapp">
-                                <img src="/assets/icons/whatsapp.png" alt="WhatsApp" />
+                                <img src={assetPath('/assets/icons/whatsapp.png')} alt="WhatsApp" />
                             </a>
                             <a href="#" className="social-pill youtube">
-                                <img src="/assets/icons/youtube.png" alt="YouTube" />
+                                <img src={assetPath('/assets/icons/youtube.png')} alt="YouTube" />
                             </a>
                         </div>
                     </div>

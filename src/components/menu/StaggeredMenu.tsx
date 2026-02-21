@@ -1,6 +1,7 @@
 import React, { useCallback, useLayoutEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { gsap } from 'gsap';
+import { assetPath } from '../../utils/assetPath';
 import './StaggeredMenu.css';
 
 export interface StaggeredMenuItem {
@@ -42,8 +43,8 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
   displaySocials = true,
   displayItemNumbering = true,
   className,
-  logoUrl = '/assets/logos/talentron-logo.jpg',
-  secondaryLogoUrl = '/assets/logos/ZCOER-Logo-White.png',
+  logoUrl = assetPath('/assets/logos/talentron-logo.jpg'),
+  secondaryLogoUrl = assetPath('/assets/logos/ZCOER-Logo-White.png'),
   menuButtonColor = '#fff',
   openMenuButtonColor = '#fff',
   accentColor = '#ff0059',
