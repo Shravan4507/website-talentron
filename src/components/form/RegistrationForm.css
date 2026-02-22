@@ -370,3 +370,96 @@
         padding: 1rem;
     }
 }
+
+/* --- Group Registration Specific Styles --- */
+.group-config-container {
+    max-width: 500px;
+    margin: 2rem auto;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 2.5rem;
+    border-radius: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.group-size-input {
+    width: 100px;
+    text-align: center;
+    font-size: 2rem !important;
+    font-weight: 800;
+    color: #ff0059 !important;
+    background: rgba(0, 0, 0, 0.3) !important;
+    border: 2px solid #ff0059 !important;
+    margin: 1rem auto;
+}
+
+.helper-text {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+.group-members-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+.member-verification-row {
+    background: rgba(255, 255, 255, 0.02);
+    padding: 1.5rem;
+    border-radius: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+}
+
+.member-verification-row:hover {
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.member-label {
+    font-size: 0.8rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.4);
+    margin-bottom: 0.75rem;
+    letter-spacing: 1px;
+}
+
+.member-preview-mini {
+    margin-top: 1rem;
+    padding: 0.75rem 1rem;
+    border-radius: 0.75rem;
+    font-size: 0.9rem;
+    animation: slideInLeft 0.3s ease forwards;
+}
+
+.member-preview-mini.success {
+    background: rgba(0, 255, 136, 0.1);
+    border: 1px solid rgba(0, 255, 136, 0.2);
+    color: #00ff88;
+}
+
+.member-preview-mini.error {
+    background: rgba(255, 0, 89, 0.1);
+    border: 1px solid rgba(255, 0, 89, 0.2);
+    color: #ff0059;
+}
+
+@keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-10px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@media (max-width: 768px) {
+    .group-config-container {
+        padding: 1.5rem;
+    }
+    
+    .member-verification-row {
+        padding: 1rem;
+    }
+}
+
