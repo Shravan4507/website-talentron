@@ -1,33 +1,332 @@
 .schedule-page {
-  width: 100%;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 80px 2rem;
-  z-index: 1;
+    padding: 120px 20px 80px;
+    max-width: 1400px;
+    margin: 0 auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.schedule-content {
-  text-align: center;
-  animation: schedEntrance 0.8s ease-out forwards;
+.schedule-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
 }
 
-@keyframes schedEntrance {
-  from { opacity: 0; transform: translateX(-20px); }
-  to { opacity: 1; transform: translateX(0); }
+.schedule-header .subtitle-wrapper {
+    transform: scale(0.7);
+    margin-bottom: -1rem;
 }
 
-.schedule-title {
-  font-size: clamp(2.5rem, 8vw, 4.5rem);
-  font-weight: 800;
-  margin-bottom: 1rem;
-  color: #fff;
+.venue-bar {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.8rem 2rem;
+    border-radius: 4rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    margin-top: 1rem;
 }
 
-.schedule-subtitle {
-  font-size: 1rem;
-  letter-spacing: 0.2rem;
-  color: #3600cc;
-  text-transform: uppercase;
+.venue-bar p {
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 600;
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.location-icon {
+    font-size: 1.4rem;
+}
+
+.milestones-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 3rem;
+    width: 100%;
+    margin: 2rem 0 6rem;
+    z-index: 10;
+}
+
+.day-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    width: 100%;
+    margin-bottom: 4rem;
+}
+
+.timeline-date-header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 5;
+}
+
+.timeline-date-header span {
+    background: #f0ff00;
+    color: #000;
+    padding: 0.8rem 2.5rem;
+    font-weight: 900;
+    font-size: 1.2rem;
+    border-radius: 4rem;
+    border: 3px solid #000;
+    box-shadow: 8px 8px 0 #000;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Timeline Components */
+.timeline-container {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    padding: 2rem 0;
+}
+
+.timeline-track {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(to bottom, 
+        transparent 0%, 
+        rgba(255, 255, 255, 0.1) 10%, 
+        rgba(255, 255, 255, 0.1) 90%, 
+        transparent 100%);
+    transform: translateX(-50%);
+}
+
+.events-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    position: relative;
+}
+
+.schedule-card-wrapper {
+    display: flex;
+    width: 100%;
+    position: relative;
+    opacity: 0;
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.schedule-card-wrapper.left {
+    justify-content: flex-start;
+    padding-right: 50%;
+}
+
+.schedule-card-wrapper.right {
+    justify-content: flex-end;
+    padding-left: 50%;
+}
+
+/* The Pop-Art Card */
+.schedule-card {
+    width: 100%;
+    max-width: 420px;
+    background: #000;
+    border: 4px solid #000;
+    border-radius: 2.5rem;
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    box-shadow: 15px 15px 0px rgba(0, 0, 0, 0.8);
+    overflow: visible;
+}
+
+.left .schedule-card {
+    margin-right: 40px;
+}
+
+.right .schedule-card {
+    margin-left: 40px;
+}
+
+.schedule-card.flagship { border-color: #ff0059; box-shadow: 15px 15px 0px rgba(255, 0, 89, 0.3); }
+.schedule-card.flagship .event-category { color: #ff0059; }
+.schedule-card.flagship .event-time { background: #ff0059; color: #fff; }
+
+.schedule-card.ceremony { border-color: #f0ff00; box-shadow: 15px 15px 0px rgba(240, 255, 0, 0.3); }
+.schedule-card.ceremony .event-category { color: #f0ff00; }
+.schedule-card.ceremony .event-time { background: #f0ff00; color: #000; }
+
+.schedule-card.regular { border-color: #00d1ff; box-shadow: 15px 15px 0px rgba(0, 209, 255, 0.2); }
+.schedule-card.regular .event-category { color: #00d1ff; }
+.schedule-card.regular .event-time { background: #00d1ff; color: #000; }
+
+.schedule-card:hover {
+    transform: translate(-8px, -8px);
+    box-shadow: 25px 25px 0px #000;
+}
+
+.schedule-card.flagship:hover { box-shadow: 25px 25px 0px rgba(255, 0, 89, 0.4); }
+.schedule-card.ceremony:hover { box-shadow: 25px 25px 0px rgba(240, 255, 0, 0.4); }
+.schedule-card.regular:hover { box-shadow: 25px 25px 0px rgba(0, 209, 255, 0.3); }
+
+.event-time {
+    position: absolute;
+    top: -20px;
+    background: #f0ff00;
+    color: #000;
+    padding: 0.6rem 1.5rem;
+    font-weight: 900;
+    font-size: 1rem;
+    border: 3px solid #000;
+    border-radius: 5rem;
+    z-index: 5;
+    box-shadow: 5px 5px 0 #000;
+}
+
+.left .event-time {
+    right: 30px;
+}
+
+.right .event-time {
+    left: 30px;
+}
+
+.card-main {
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 2.2rem;
+    height: 100%;
+}
+
+.event-category {
+    color: #ff00ea;
+    font-size: 0.8rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 0.5rem;
+}
+
+.card-main h3 {
+    font-size: 1.8rem;
+    color: #fff;
+    font-weight: 800;
+    margin: 0.5rem 0;
+    line-height: 1.2;
+}
+
+.event-venue {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.event-divider {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+    margin: 1rem 0;
+}
+
+.event-desc {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+/* Timeline Node */
+.timeline-node {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 20px;
+    height: 20px;
+    background: #000;
+    border: 4px solid #fff;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+.flagship-mark {
+    position: absolute;
+    bottom: -15px;
+    right: 20px;
+    background: #ff0059;
+    color: #fff;
+    padding: 0.4rem 1rem;
+    font-weight: 900;
+    font-size: 0.7rem;
+    border: 2px solid #000;
+    border-radius: 2rem;
+    letter-spacing: 1px;
+}
+
+/* Responsive Overrides */
+@media (max-width: 900px) {
+    .milestones-grid {
+        flex-direction: column;
+        align-items: center;
+        max-width: 500px;
+        margin-bottom: 4rem;
+    }
+
+    .timeline-track {
+        left: 20px;
+    }
+
+    .timeline-node {
+        left: 20px;
+    }
+
+    .schedule-card-wrapper.left,
+    .schedule-card-wrapper.right {
+        padding-left: 60px;
+        padding-right: 0;
+        justify-content: flex-start;
+    }
+
+    .left .schedule-card,
+    .right .schedule-card {
+        margin: 0;
+        max-width: 100%;
+    }
+
+    .event-time {
+        left: 30px !important;
+        right: auto !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .schedule-header {
+        margin-bottom: 2.5rem;
+    }
+
+    .card-main h3 {
+        font-size: 1.5rem;
+    }
+
+    .schedule-card {
+        border-width: 3px;
+    }
 }

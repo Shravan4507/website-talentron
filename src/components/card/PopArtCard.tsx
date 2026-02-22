@@ -22,10 +22,21 @@ const PopArtCard: React.FC<PopArtCardProps> = ({
   className = "",
   animationDelay
 }) => {
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (onClick && (e.key === 'Enter' || e.key === ' ')) {
+      e.preventDefault();
+      onClick();
+    }
+  };
+
   return (
     <div 
       className={`pop-art-card ${className}`}
       onClick={onClick}
+      onKeyDown={handleKeyDown}
+      role="button"
+      tabIndex={0}
+      aria-label={footerText || buttonText}
       style={{ 
         backgroundColor: backgroundImage ? 'transparent' : backgroundColor,
         backgroundImage: backgroundImage ? `url(${backgroundImage})` : 'none',

@@ -1,5 +1,6 @@
 import { useNavigate, Link } from 'react-router-dom';
 import { assetPath } from '../../utils/assetPath';
+import { useAuth } from '../../context/AuthContext';
 import './Navbar.css';
 
 const menuItems = [
@@ -12,6 +13,7 @@ const menuItems = [
 ];
 
 const Navbar = () => {
+  const { currentUser, isAdmin } = useAuth();
   const navigate = useNavigate();
   const half = Math.floor(menuItems.length / 2);
   const leftLinks = menuItems.slice(0, half);
@@ -42,9 +44,22 @@ const Navbar = () => {
             </Link>
           ))}
         </div>
-        <button className="navbar-login-btn" onClick={() => navigate('/login')}>
-          Login
-        </button>
+        
+        {currentUser ? (
+          <div className="navbar-user-avatar" onClick={() => navigate(isAdmin ? '/admin-dashboard' : '/user-dashboard')}>
+            {currentUser.photoURL ? (
+              <img src={currentUser.photoURL} alt="Profile" className="nav-avatar-img" />
+            ) : (
+              <div className="nav-avatar-placeholder">
+                {currentUser.displayName?.charAt(0) || 'U'}
+              </div>
+            )}
+          </div>
+        ) : (
+          <button className="navbar-login-btn" onClick={() => navigate('/login')}>
+            Login
+          </button>
+        )}
       </div>
     </nav>
   );

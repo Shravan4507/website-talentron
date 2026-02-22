@@ -64,3 +64,53 @@ body {
 #root {
   width: 100%;
 }
+
+/* Skeleton Loading System */
+.skeleton-pulse {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.03) 25%,
+    rgba(255, 255, 255, 0.08) 37%,
+    rgba(255, 255, 255, 0.03) 63%
+  );
+  background-size: 400% 100%;
+  animation: skeleton-shimmer 1.4s ease infinite;
+  border-radius: 4px;
+}
+
+@keyframes skeleton-shimmer {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.skeleton-text {
+  height: 1rem;
+  margin-bottom: 0.5rem;
+  width: 100%;
+}
+
+.skeleton-title {
+  height: 2rem;
+  margin-bottom: 1rem;
+  width: 60%;
+}
+
+.skeleton-circle {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+}
+
+.skeleton-card {
+  background: #0d0d0d;
+  border: 2px solid #222;
+  border-radius: 2rem;
+  padding: 1.5rem;
+  height: 100%;
+  width: 100%;
+}
+

@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import ChromaGrid, { type ChromaItem } from '../../components/grid/ChromaGrid';
 import OutlinedTitle from '../../components/heading/OutlinedTitle';
+import ModelPortal from '../../components/modal/ModelPortal';
 import './Sponsors.css';
+
 
 interface SponsorItem extends ChromaItem {
     description: string;
@@ -132,36 +134,32 @@ const Sponsors: React.FC = () => {
                 <button className="be-partner-btn">Partner With Us</button>
             </div>
 
-            {/* Sponsor Detail Modal Overlay */}
-            {selectedSponsor && (
-                <div className="sponsor-modal-overlay" onClick={closeOverlay}>
-                    <div className="sponsor-modal-content" onClick={e => e.stopPropagation()}>
-                        <button className="modal-close-btn" onClick={closeOverlay}>&times;</button>
-                        <div className="modal-main-grid">
-                            <div className="modal-image-col">
-                                <img src={selectedSponsor.image} alt={selectedSponsor.title} />
-                                <div className="modal-tier-badge">{selectedSponsor.subtitle}</div>
-                            </div>
-                            <div className="modal-info-col">
-                                <h2>{selectedSponsor.title}</h2>
-                                <span className="modal-industry">{selectedSponsor.handle}</span>
-                                <div className="modal-divider"></div>
-                                <p className="modal-description">{selectedSponsor.description}</p>
-                                <div className="modal-footer">
-                                    <a 
-                                        href={selectedSponsor.url} 
-                                        target="_blank" 
-                                        rel="noopener noreferrer"
-                                        className="visit-website-btn"
-                                    >
-                                        Visit Website
-                                    </a>
-                                </div>
-                            </div>
+            <ModelPortal 
+                isOpen={!!selectedSponsor} 
+                onClose={closeOverlay}
+                image={selectedSponsor?.image}
+                imageAlt={selectedSponsor?.title}
+                imageChildren={selectedSponsor && <div className="modal-tier-badge">{selectedSponsor.subtitle}</div>}
+            >
+                {selectedSponsor && (
+                    <>
+                        <h2>{selectedSponsor.title}</h2>
+                        <span className="modal-industry">{selectedSponsor.handle}</span>
+                        <div className="modal-divider"></div>
+                        <p className="modal-description">{selectedSponsor.description}</p>
+                        <div className="modal-footer">
+                            <a 
+                                href={selectedSponsor.url} 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="visit-website-btn"
+                            >
+                                Visit Website
+                            </a>
                         </div>
-                    </div>
-                </div>
-            )}
+                    </>
+                )}
+            </ModelPortal>
         </div>
     );
 };

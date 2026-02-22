@@ -231,7 +231,10 @@ export const ChromaGrid: React.FC<ChromaGridProps> = ({
                                 </p>
                                 <div className="modal-actions">
                                     {showRegister && (
-                                        <Link to={`/register?comp=${encodeURIComponent(selectedMember.title)}`} className="register-btn">
+                                        <Link 
+                                            to={`/competitions/${encodeURIComponent(selectedMember.location || 'General')}/register?comp=${encodeURIComponent(selectedMember.title)}`} 
+                                            className="register-btn"
+                                        >
                                             Register Now
                                         </Link>
                                     )}

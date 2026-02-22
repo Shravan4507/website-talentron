@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /admin-dashboard
+Disallow: /user-dashboard
+Disallow: /user-signup
+Disallow: /admin-signup
+
+Sitemap: https://talentron.com/sitemap.xml

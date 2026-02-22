@@ -60,6 +60,34 @@
   margin: 0 auto;
 }
 
+@media (max-width: 1024px) {
+    .team-container .chroma-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .team-page {
+        padding: 100px 1rem 60px;
+    }
+
+    .team-header {
+        margin-bottom: 2rem;
+    }
+
+    .team-container .chroma-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        padding: 1rem;
+    }
+
+    .team-description {
+        font-size: 1rem;
+        margin-bottom: 0;
+    }
+}
+
 .team-container .chroma-card {
   width: 100%;
   aspect-ratio: 4/5;
@@ -115,7 +143,7 @@
 
 .chroma-modal-content {
     background: rgba(0, 0, 0, 1);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-left: 3px solid rgba(255, 255, 255, 0.3);
     border-radius: 3rem;
     max-width: 900px;
     width: 100%;
@@ -306,6 +334,10 @@
 }
 
 @media (max-width: 900px) {
+    .chroma-modal-content {
+        border-top: 2px solid rgba(255, 255, 255, 0.3);
+        border-left: none;
+    }
     .modal-main {
         grid-template-columns: 1fr;
     }

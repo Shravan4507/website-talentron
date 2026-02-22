@@ -1,36 +1,201 @@
 .about-page {
-  width: 100%;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 80px 2rem;
-  z-index: 1;
+    padding: 120px 20px 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow-x: hidden;
 }
 
-.about-content {
-  text-align: center;
-  animation: aboutEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+.about-hero {
+    text-align: center;
+    margin-bottom: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    z-index: 10;
 }
 
-@keyframes aboutEntrance {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+.about-hero .subtitle-wrapper {
+    transform: scale(0.7);
+    margin-bottom: -1rem;
 }
 
-.about-title {
-  font-size: clamp(2.5rem, 8vw, 4.5rem);
-  font-weight: 800;
-  margin-bottom: 1rem;
-  background: linear-gradient(135deg, #fff 0%, rgba(255, 255, 255, 0.5) 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.about-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    width: 100%;
+    z-index: 10;
 }
 
-.about-subtitle {
-  font-size: 1rem;
-  letter-spacing: 0.2rem;
-  color: rgba(255, 255, 255, 0.5);
-  text-transform: uppercase;
+.about-text-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 3px solid #000;
+    border-radius: 3rem;
+    padding: 4rem;
+    backdrop-filter: blur(20px);
+    box-shadow: 20px 20px 0px rgba(255, 0, 234, 0.1);
+    position: relative;
+}
+
+.about-text-card h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 2rem;
+    color: #f0ff00;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.about-text-card p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 1.5rem;
+}
+
+.about-text-card strong {
+    color: #fff;
+    font-weight: 900;
+}
+
+/* Stats Section */
+.about-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.stat-pill {
+    background: #000;
+    border: 3px solid #000;
+    padding: 2.5rem;
+    border-radius: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 10px 10px 0px #00d1ff;
+    transition: all 0.3s ease;
+}
+
+.stat-pill:hover {
+    transform: translate(-5px, -5px);
+    box-shadow: 15px 15px 0px #00d1ff;
+}
+
+.stat-num {
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: #fff;
+    font-family: var(--font-display);
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 3px;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+/* Vision Section */
+.vision-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+}
+
+.vision-card {
+    background: rgba(0, 0, 0, 0.6);
+    border: 3px solid #000;
+    border-radius: 3rem;
+    padding: 3.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 15px 15px 0px rgba(0, 0, 0, 0.8);
+}
+
+.vision-card.accent {
+    box-shadow: 15px 15px 0px rgba(255, 0, 234, 0.2);
+    border-color: rgba(255, 0, 234, 0.3);
+}
+
+.vision-card:hover {
+    transform: translate(-10px, -10px);
+}
+
+.vision-icon {
+    font-size: 3rem;
+}
+
+.vision-card h3 {
+    font-size: 1.8rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.vision-card p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.about-footer-text {
+    margin-top: 8rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    z-index: 10;
+}
+
+.about-footer-text p {
+    color: rgba(255, 255, 255, 0.3);
+    font-weight: 800;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+}
+
+.about-bg-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-15deg);
+    font-size: 30vw;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.015);
+    pointer-events: none;
+    z-index: 1;
+    white-space: nowrap;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .about-stats,
+    .vision-section {
+        grid-template-columns: 1fr;
+    }
+
+    .about-text-card {
+        padding: 2.5rem;
+    }
+
+    .about-text-card h2 {
+        font-size: 2rem;
+    }
+
+    .stat-num {
+        font-size: 3rem;
+    }
 }

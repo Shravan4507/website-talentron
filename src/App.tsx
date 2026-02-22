@@ -5,11 +5,14 @@ import StaggeredMenu from './components/menu/StaggeredMenu';
 import Grainient from './components/background/Grainient';
 import ScrollToTop from './components/navigation/ScrollToTop';
 import { ToastProvider } from './components/toast/Toast';
+import { AuthProvider, useAuth } from './context/AuthContext';
+import ProtectedRoute from './components/auth/ProtectedRoute';
+import PublicRoute from './components/auth/PublicRoute';
 import './components/background/Grainient.css';
 
 // Pages
 import Home from './pages/home/Home';
-import LoginPage from './pages/login/login';
+import Login from './pages/auth/Login';
 import About from './pages/about/About';
 import Competitions from './pages/competitions/Competitions';
 import GenrePage from './pages/competitions/GenrePage';
@@ -21,21 +24,15 @@ import Privacy from './pages/privacy/Privacy';
 import Terms from './pages/terms/Terms';
 import Cookies from './pages/cookies/Cookies';
 import Sponsors from './pages/sponsors/Sponsors';
+import TestModel from './pages/test/TestModel';
+import RegisterEvent from './pages/competitions/RegisterEvent';
 import UserSignup from './user/user-signup';
 import AdminSignup from './admin/admin-signup';
 import UserDashboard from './user/user-dashboard';
 import AdminDashboard from './admin/admin-dashboard';
+import ManageRegistrations from './admin/ManageRegistrations';
+import CertificateVerification from './pages/CertificateVerification';
 import NotFound from './pages/not-found/NotFound';
-
-const menuItems = [
-  { label: 'Home', ariaLabel: 'Home', link: '/' },
-  { label: 'About', ariaLabel: 'About', link: '/about' },
-  { label: 'Competitions', ariaLabel: 'Competitions', link: '/competitions' },
-  { label: 'Schedule', ariaLabel: 'Schedule', link: '/schedule' },
-  { label: 'Contact', ariaLabel: 'Contact', link: '/contact' },
-  { label: 'Gallery', ariaLabel: 'Gallery', link: '/gallery' },
-  { label: 'Login', ariaLabel: 'Login', link: '/login' }
-];
 
 const socialItems = [
   { label: 'Instagram', link: 'https://instagram.com' },
@@ -44,6 +41,22 @@ const socialItems = [
 ];
 
 function AppContent() {
+  const { currentUser, isAdmin } = useAuth();
+
+  const menuItems = [
+    { label: 'Home', ariaLabel: 'Home', link: '/' },
+    { label: 'About', ariaLabel: 'About', link: '/about' },
+    { label: 'Competitions', ariaLabel: 'Competitions', link: '/competitions' },
+    { label: 'Schedule', ariaLabel: 'Schedule', link: '/schedule' },
+    { label: 'Contact', ariaLabel: 'Contact', link: '/contact' },
+    { label: 'Gallery', ariaLabel: 'Gallery', link: '/gallery' },
+    { 
+      label: currentUser ? 'Dashboard' : 'Login', 
+      ariaLabel: currentUser ? 'Dashboard' : 'Login', 
+      link: currentUser ? (isAdmin ? '/admin-dashboard' : '/user-dashboard') : '/login' 
+    }
+  ];
+
   return (
     <div className="app-container" style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
       <Navbar />
@@ -54,41 +67,50 @@ function AppContent() {
         menuButtonColor="#ffffff"
       />
 
-      {/* Global Persistent Background */}
       <div className="grainient-background-wrapper">
         <Grainient
-          color1="#ff0059"
-          color2="#3600cc"
-          color3="#ffc800"
-          timeSpeed={0.25}
-          colorBalance={0}
-          warpStrength={1}
-          warpFrequency={5}
-          warpSpeed={2}
-          warpAmplitude={50}
-          blendAngle={0}
-          blendSoftness={0.05}
-          rotationAmount={500}
-          noiseScale={2}
-          grainAmount={0.15}
-          grainScale={2}
-          grainAnimated={false}
-          contrast={1.5}
-          gamma={1}
-          saturation={1}
-          centerX={0}
-          centerY={0}
-          zoom={0.9}
+          color1="#ff0059" color2="#3600cc" color3="#ffc800"
+          timeSpeed={0.25} warpStrength={1} warpFrequency={5}
+          warpSpeed={2} warpAmplitude={50} grainAmount={0.15}
+          contrast={1.5} zoom={0.9}
         />
         <div className="grainient-blur-overlay" />
       </div>
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<LoginPage />} />
+        <Route path="/login" element={
+          <PublicRoute><Login /></PublicRoute>
+        } />
         <Route path="/about" element={<About />} />
         <Route path="/competitions" element={<Competitions />} />
         <Route path="/competitions/:genre" element={<GenrePage />} />
+        
+        {/* Protected Registration/Dashboard Routes */}
+        <Route path="/competitions/:genre/register" element={
+          <ProtectedRoute><RegisterEvent /></ProtectedRoute>
+        } />
+        
+        <Route path="/user-signup" element={
+          <PublicRoute onlyForUnregistered={true}><UserSignup /></PublicRoute>
+        } />
+        <Route path="/admin-signup" element={
+          <PublicRoute onlyForUnregistered={true}><AdminSignup /></PublicRoute>
+        } />
+        
+        <Route path="/user-dashboard" element={
+          <ProtectedRoute><UserDashboard /></ProtectedRoute>
+        } />
+        
+        <Route path="/admin-dashboard" element={
+          <ProtectedRoute requireAdmin={true}><AdminDashboard /></ProtectedRoute>
+        } />
+        
+        <Route path="/manage-registration" element={
+          <ProtectedRoute requireAdmin={true}><ManageRegistrations /></ProtectedRoute>
+        } />
+
+        {/* Static Pages */}
         <Route path="/schedule" element={<Schedule />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/gallery" element={<Gallery />} />
@@ -97,10 +119,11 @@ function AppContent() {
         <Route path="/terms" element={<Terms />} />
         <Route path="/cookies" element={<Cookies />} />
         <Route path="/sponsors" element={<Sponsors />} />
-        <Route path="/user-signup" element={<UserSignup />} />
-        <Route path="/admin-signup" element={<AdminSignup />} />
-        <Route path="/user-dashboard" element={<UserDashboard />} />
-        <Route path="/admin-dashboard" element={<AdminDashboard />} />
+        <Route path="/test-model" element={<TestModel />} />
+        
+        {/* Public Verification */}
+        <Route path="/verify/:certId" element={<CertificateVerification />} />
+        
         <Route path="*" element={<NotFound />} />
       </Routes>
 
@@ -112,10 +135,12 @@ function AppContent() {
 function App() {
   return (
     <Router>
-      <ToastProvider>
-        <ScrollToTop />
-        <AppContent />
-      </ToastProvider>
+      <AuthProvider>
+        <ToastProvider>
+          <ScrollToTop />
+          <AppContent />
+        </ToastProvider>
+      </AuthProvider>
     </Router>
   )
 }

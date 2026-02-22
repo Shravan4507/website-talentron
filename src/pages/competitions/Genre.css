@@ -160,3 +160,38 @@
         padding: 0.5rem;
     }
 }
+/* --- Rules List styling --- */
+.modal-rules-list {
+    margin: 0.5rem 0 0;
+    padding-left: 1.2rem;
+    list-style: none;
+}
+
+.modal-rules-list li {
+    position: relative;
+    padding: 0.2rem 0;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.modal-rules-list li::before {
+    content: "⚡";
+    position: absolute;
+    left: -1.2rem;
+    color: #f0ff00;
+    font-size: 0.8rem;
+    top: 0.4rem;
+}
+
+.modal-section {
+    margin-bottom: 2rem;
+}
+
+.modal-section h4 {
+    color: #f0ff00;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: 1px;
+}

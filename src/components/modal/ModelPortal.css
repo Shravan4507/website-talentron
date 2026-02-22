@@ -1,0 +1,166 @@
+.model-portal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    z-index: 20000;
+    display: flex;
+    align-items: flex-start; /* Allow content to start at top for scrolling */
+    justify-content: center;
+    overflow-y: auto; /* Enable scrolling on the overlay */
+    padding: 60px 0; /* Vertical breathing room */
+    animation: modelOverlayFade 0.4s ease forwards;
+    scrollbar-width: none;
+}
+
+.model-portal-overlay::-webkit-scrollbar {
+    display: none;
+}
+
+@keyframes modelOverlayFade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.model-portal-content {
+    width: 90vw;
+    max-width: 1920px;
+    height: 820px;
+    border-left: 3px solid rgba(255, 255, 255, 0.3);
+    background: #000000;
+    border-radius: 2.5rem;
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 40% 60%;
+    margin-top: auto;
+    margin-bottom: auto; /* Center when content is short */
+    animation: modelContentIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.model-image-side {
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+}
+
+.model-image-side::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right,
+            rgba(0, 0, 0, 0) 0%,
+            rgba(0, 0, 0, 0.05) 15%,
+            rgba(0, 0, 0, 0.2) 35%,
+            rgba(0, 0, 0, 0.5) 60%,
+            rgba(0, 0, 0, 0.85) 85%,
+            rgba(0, 0, 0, 1) 100%);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.model-image-side img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.model-details-side {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 4rem;
+    width: 100%;
+    box-sizing: border-box;
+    min-width: 0; /* Prevents flex items from overflowing */
+    overflow-y: auto; /* Allow content to scroll if it exceeds height */
+}
+
+.model-details-side > * {
+    max-width: 100%;
+    word-wrap: break-word;
+    box-sizing: border-box;
+}
+
+@keyframes modelContentIn {
+    from { opacity: 0; transform: scale(0.95) translateY(20px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* Close button branding - positioning now managed in component */
+.model-portal-close {
+    z-index: 20005;
+}
+
+/* Responsive refinements for a premium mobile/tablet experience */
+@media (max-width: 1024px) {
+    .model-portal-content {
+        grid-template-columns: 1fr;
+        width: 92vw;
+        border-top: 3px solid rgba(255, 255, 255, 0.3);
+        border-left: none;
+        border-radius: 2rem;
+    }
+
+    .model-image-side {
+        height: 40vh;
+        min-height: 300px;
+    }
+
+    .model-image-side::after {
+        background: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0) 0%,
+            rgba(0, 0, 0, 0.05) 15%,
+            rgba(0, 0, 0, 0.2) 35%,
+            rgba(0, 0, 0, 0.5) 60%,
+            rgba(0, 0, 0, 0.85) 85%,
+            rgba(0, 0, 0, 1) 100%);
+    }
+
+    .model-details-side {
+        padding: 3rem 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .model-portal-content {
+        width: 95vw;
+        border-radius: 1.5rem;
+    }
+
+    .model-image-side {
+        height: 35vh;
+        min-height: 250px;
+    }
+
+    .model-details-side {
+        padding: 2rem 1.25rem;
+        width: 100%;
+        overflow-x: hidden; /* Prevent horizontal leaks */
+    }
+}
+
+.model-details-side::-webkit-scrollbar {
+    width: 6px;
+}
+
+.model-details-side::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.model-details-side::-webkit-scrollbar-thumb {
+    background: rgba(255, 0, 89, 0.3);
+    border-radius: 10px;
+}
+
+.model-details-side::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 0, 89, 0.6);
+}

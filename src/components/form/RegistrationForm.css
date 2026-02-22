@@ -1,0 +1,372 @@
+/* Registration Form Styles - Replicating Signup Aesthetics */
+.registration-card {
+    max-width: 900px !important;
+    margin: 0 auto;
+}
+
+.signup-card {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 3rem;
+  padding: 3.5rem 3rem;
+  box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.6);
+}
+
+.signup-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.signup-header h1 {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 800;
+  letter-spacing: -1.5px;
+  margin-bottom: 0.75rem;
+  background: linear-gradient(135deg, #fff 0%, rgba(255, 255, 255, 0.6) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.event-badge-pill {
+    display: inline-block;
+    background: rgba(255, 0, 89, 0.1);
+    color: #ff0059;
+    padding: 0.4rem 1.25rem;
+    border-radius: 2rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.05rem;
+    text-transform: uppercase;
+    border: 1px solid rgba(255, 0, 89, 0.2);
+    margin-top: 0.5rem;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.input-group label {
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  margin-left: 0.5rem;
+  letter-spacing: 1.5px;
+}
+
+.input-group input, 
+.input-group select {
+  font-family: var(--font-body);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.9rem 1.25rem;
+  border-radius: 7rem;
+  color: #fff;
+  font-size: 0.95rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.form-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='white' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: calc(100% - 1.25rem) center;
+  padding-right: 3rem !important;
+}
+
+.form-select option {
+  background: #1a1a1a;
+  color: #fff;
+}
+
+.input-group input:focus, 
+.input-group select:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.04);
+  border-color: #ff0059;
+}
+
+.registration-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.back-btn {
+    background: none;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.6);
+    padding: 1.15rem 3rem;
+    border-radius: 4rem;
+    font-family: var(--font-ui);
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    transition: all 0.3s ease;
+    line-height: normal;
+}
+
+.back-btn:hover {
+    background: rgba(255, 255, 255, 0);
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.signup-btn {
+  background: #ff0059;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 1.15rem 4rem;
+  border-radius: 4rem;
+  font-family: var(--font-ui);
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+}
+
+.signup-btn:active {
+  transform: scale(0.98);
+}
+
+
+/* --- Already Registered Alert --- */
+.already-registered-banner {
+    background: rgba(255, 240, 0, 0.1);
+    border: 1px solid rgba(255, 240, 0, 0.3);
+    padding: 1.25rem 1.5rem;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: #f0ff00;
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    animation: slideInDown 0.4s ease;
+}
+
+@keyframes slideInDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.teammate-preview-card.error-border {
+    border-color: #ff0059;
+    box-shadow: 0 0 30px rgba(255, 0, 89, 0.1);
+}
+
+.teammate-status-error {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 0, 89, 0.2);
+    color: #ff0059;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+}
+
+@media (max-width: 768px) {
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  
+  .signup-card {
+    padding: 2.5rem 1.75rem;
+    border-radius: 2rem;
+  }
+  
+  .signup-header h1 {
+    font-size: 2rem;
+  }
+
+  .registration-actions {
+      flex-direction: column-reverse;
+      width: 100%;
+  }
+
+  .back-btn, .signup-btn {
+      width: 100%;
+      padding: 1rem;
+      font-size: 1rem;
+  }
+}
+
+/* --- Read-only and Multi-step Styles --- */
+.read-only-input {
+    background: rgba(255, 255, 255, 0.02) !important;
+    border-color: rgba(255, 255, 255, 0.04) !important;
+    color: rgba(255, 255, 255, 0.4) !important;
+    cursor: not-allowed;
+}
+
+.form-steps-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 3rem;
+    gap: 1rem;
+}
+
+.step-dot {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 0.9rem;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.step-dot.active {
+    background: #ff0059;
+    color: #fff;
+    box-shadow: 0 0 20px rgba(255, 0, 89, 0.4);
+}
+
+.step-line {
+    width: 40px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.teammate-step-container {
+    animation: fadeInStep 0.5s ease forwards;
+}
+
+@keyframes fadeInStep {
+    from { opacity: 0; transform: translateX(20px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+.step-instruction {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+.search-input-wrapper {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.teammate-search-input {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.04);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    padding: 1rem 1.5rem;
+    border-radius: 1rem;
+    color: #fff;
+    font-size: 1.1rem;
+    font-family: var(--font-display);
+    letter-spacing: 2px;
+}
+
+.teammate-search-input:focus {
+    outline: none;
+    border-color: #ff0059;
+}
+
+.fetch-btn {
+    background: #fff;
+    color: #000;
+    border: none;
+    padding: 0 2rem;
+    border-radius: 1rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.fetch-btn:hover {
+    background: #f0ff00;
+}
+
+.teammate-preview-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 2px solid #ff0059;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.preview-header {
+    background: #ff0059;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.preview-details {
+    padding: 1.5rem;
+}
+
+.preview-line {
+    margin-bottom: 0.5rem;
+    color: #fff;
+    font-size: 1rem;
+}
+
+.preview-line strong {
+    color: rgba(255, 255, 255, 0.4);
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    margin-right: 0.5rem;
+}
+
+@media (max-width: 480px) {
+    .search-input-wrapper {
+        flex-direction: column;
+    }
+    .fetch-btn {
+        padding: 1rem;
+    }
+}

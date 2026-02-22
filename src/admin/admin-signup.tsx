@@ -1,15 +1,23 @@
-import React, { useState } from 'react';
-import './admin-signup.css';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { doc, setDoc } from 'firebase/firestore';
+import { db } from '../firebase/config';
+import { useAuth } from '../context/AuthContext';
+import { getNextIdNumber } from '../utils/idGenerator';
+import { useToast } from '../components/toast/Toast';
+import { assetPath } from '../utils/assetPath';
 import { majors } from '../data/majors';
 import DatePicker from '../components/date-picker/DatePicker';
 import SearchableDropdown from '../components/searchable-dropdown/SearchableDropdown';
-import { useToast } from '../components/toast/Toast';
-import { assetPath } from '../utils/assetPath';
+import './admin-signup.css';
 
 const ZCOER_COLLEGE = "Zeal Education Society's Zeal College of Engineering & Research, Narhe, Pune";
 
 const AdminSignup: React.FC = () => {
+    const { currentUser, loginWithGoogle, refreshProfile } = useAuth();
+    const navigate = useNavigate();
     const { showToast } = useToast();
+    const [loading, setLoading] = useState(false);
     const [step, setStep] = useState<'auth' | 'form'>('auth');
     const [formData, setFormData] = useState({
         firstName: '',
@@ -26,16 +34,26 @@ const AdminSignup: React.FC = () => {
         rollNo: ''
     });
 
-    const handleGoogleSignup = () => {
-        // Simulating Google Auth callback with pre-filled profile data
-        console.log('Google Auth Success');
-        setFormData(prev => ({
-            ...prev,
-            firstName: 'John',
-            lastName: 'Doe',
-            email: 'john.doe@zcoer.edu.in'
-        }));
-        setStep('form');
+    useEffect(() => {
+        if (currentUser) {
+            const names = currentUser.displayName?.split(' ') || ['', ''];
+            setFormData(prev => ({
+                ...prev,
+                firstName: names[0] || '',
+                lastName: names.slice(1).join(' ') || '',
+                email: currentUser.email || ''
+            }));
+            setStep('form');
+        }
+    }, [currentUser]);
+
+    const handleGoogleSignup = async () => {
+        try {
+            await loginWithGoogle();
+            // Redirection logic is handled by useEffect
+        } catch (error) {
+            showToast('Authentication failed.', 'error');
+        }
     };
 
     const validatePhone = (phone: string) => {
@@ -63,7 +81,7 @@ const AdminSignup: React.FC = () => {
         setFormData(prev => ({ ...prev, [name]: value }));
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         
         // Manual Validation for noValidate form
@@ -104,8 +122,33 @@ const AdminSignup: React.FC = () => {
             return;
         }
 
-        console.log('Admin Data Submitted:', formData);
-        showToast('Admin Profile completed successfully!', 'success');
+        setLoading(true);
+        try {
+            const adminIdNum = await getNextIdNumber('admin');
+            const adminUniqueId = `TLRN-ADM-${adminIdNum}`;
+
+            const adminData = {
+                uid: currentUser?.uid,
+                adminId: adminUniqueId,
+                ...formData,
+                role: 'Festival Administrator',
+                permissions: [], // Added for role-based access control
+                createdAt: new Date().toISOString()
+            };
+
+            await setDoc(doc(db, 'admins', currentUser!.uid), adminData);
+            
+            // Force state update in AuthContext
+            await refreshProfile();
+            
+            showToast(`Admin Setup Complete! ID: ${adminUniqueId}`, 'success');
+            navigate('/admin-dashboard');
+        } catch (error) {
+            console.error("Admin Signup Error:", error);
+            showToast("Failed to initialize admin account.", "error");
+        } finally {
+            setLoading(false);
+        }
     };
 
     // Generate Divisions: A to Z + Other
@@ -253,8 +296,8 @@ const AdminSignup: React.FC = () => {
                             <input name="rollNo" type="text" placeholder="Enter Your Roll Number" onChange={handleInputChange} />
                         </div>
 
-                        <button type="submit" className="signup-btn">
-                            Complete Setup
+                        <button type="submit" className="signup-btn" disabled={loading}>
+                            {loading ? 'INITIALIZING...' : 'Complete Setup'}
                         </button>
                     </form>
                 )}

@@ -1,0 +1,704 @@
+/* ManageRegistrations.css */
+
+/* --- Registration Data Cards --- */
+.registration-data-card {
+    background: #111;
+    border-radius: 2rem;
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 2rem;
+    box-shadow: 10px 10px 0px #0d0d0d;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid rgba(255, 0, 170, 0.1);
+}
+
+.reg-card-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.reg-event-info {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.reg-badge {
+    background: #f0ff00;
+    color: #000;
+    padding: 0.3rem 1rem;
+    border-radius: 2rem;
+    font-weight: 900;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    border: none;
+}
+
+.reg-event-info h3 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 950;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0;
+}
+
+.reg-time {
+    margin: 0;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.5);
+    margin-left: auto;
+    font-weight: 700;
+}
+
+.reg-person-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2.5rem;
+}
+
+.person-box label, .contact-box label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 0;
+    margin-bottom: 0.75rem;
+}
+
+.person-name {
+    font-size: 1.3rem;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.2;
+}
+
+.person-id {
+    font-size: 0.9rem;
+    font-weight: 800;
+    color: #00d4ff;
+    margin-top: 0.2rem;
+}
+
+.person-college {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.5);
+    margin-top: 0.4rem;
+}
+
+.contact-item {
+    font-size: 1rem;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.contact-item span {
+    font-size: 1.1rem;
+}
+
+.email-item {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+}
+
+.reg-card-actions {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+    width: 180px;
+}
+
+.status-btn {
+    padding: 0.8rem;
+    border-radius: 3rem;
+    font-weight: 950;
+    border: 3px solid #000;
+    cursor: default;
+}
+
+.status-btn.pending {
+    background: #ffc800;
+    color: #000;
+    box-shadow: 4px 4px 0px #000;
+}
+
+.view-details-btn {
+    background: #000;
+    color: #fff;
+    border: 1px solid #333;
+    padding: 1rem;
+    border-radius: 3rem;
+    font-weight: 900;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+.view-details-btn:active {
+    transform: scale(0.98);
+}
+
+/* --- Compact Registration Cards --- */
+.registration-data-card.compact {
+    padding: 1.25rem 2rem;
+    gap: 1.5rem;
+    border-left-width: 8px;
+    align-items: center;
+}
+
+.registration-data-card.compact .reg-card-main {
+    gap: 1rem;
+}
+
+.registration-data-card.compact .reg-event-info h3 {
+    font-size: 1.4rem;
+}
+
+.reg-category-pill {
+    font-size: 0.7rem;
+    background: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.4);
+    padding: 0.2rem 0.6rem;
+    border-radius: 2rem;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+}
+
+.reg-person-brief {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+}
+
+.brief-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.brief-item label {
+    font-size: 0.65rem;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.brief-item span {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.brief-phone {
+    font-size: 0.8rem;
+    color: #00d4ff;
+    font-weight: 700;
+    margin-top: 0.1rem;
+}
+
+.registration-data-card.compact .reg-card-actions {
+    width: auto;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+}
+
+.time-status {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.2rem;
+}
+
+.reg-time-brief {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.3);
+    font-weight: 700;
+}
+
+.status-indicator {
+    font-size: 0.65rem;
+    font-weight: 950;
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.3rem;
+}
+
+.status-indicator.pending {
+    background: #ffc800;
+    color: #000;
+}
+
+.status-indicator.approved {
+    background: #00ff88;
+    color: #000;
+}
+
+.status-indicator.rejected {
+    background: #ff0059;
+    color: #fff;
+}
+
+.view-details-btn.compact {
+    padding: 0.8rem 1.2rem;
+    font-size: 0.75rem;
+    white-space: nowrap;
+}
+
+/* --- Registration Details Modal (Pop-Art) --- */
+.details-modal-overlay {
+    backdrop-filter: blur(40px);
+    background: rgba(0, 0, 0, 0.9);
+}
+
+.details-modal-card {
+    background: #0a0a0a;
+    border: 4px solid #000;
+    border-radius: 2.5rem;
+    width: 95%;
+    max-width: 1000px;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 10px 10px 0px #ff0059;
+    overflow: hidden;
+}
+
+.modal-header-pop {
+    padding: 3rem;
+    background: #111;
+    border-bottom: 4px solid #000;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.header-event-info h1 {
+    font-size: 3.5rem;
+    font-weight: 950;
+    color: #fff;
+    text-transform: uppercase;
+    line-height: 1;
+    margin: 0.5rem 0;
+}
+
+.category-pill-large {
+    background: #f0ff00;
+    color: #000;
+    padding: 0.4rem 1.2rem;
+    border-radius: 2rem;
+    font-weight: 900;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    border: none;
+}
+
+.reg-id-badge {
+    color: #00d4ff;
+    font-weight: 900;
+    font-family: monospace;
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+.close-modal-btn {
+    background: #00000000;
+    border: none;
+    color: #fff;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.close-modal-btn:active {
+    transform: scale(0.98);
+}
+
+.modal-scroll-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 3rem;
+    scrollbar-width: thin;
+    scrollbar-color: #ff0059 #000;
+}
+
+.details-grid-pop {
+    display: grid;
+    gap: 4rem;
+}
+
+.details-section-pop {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.section-title-pop {
+    font-size: 1.4rem;
+    font-weight: 950;
+    color: #ff0059;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-bottom: 2px solid rgba(255, 0, 89, 0.2);
+    padding-bottom: 0.5rem;
+    margin: 0;
+}
+
+.data-row-pop {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+}
+
+.data-item-pop label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.3);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.data-item-pop p {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #fff;
+    margin: 0;
+}
+
+.highlight-text {
+    color: #00d4ff !important;
+}
+
+.status-label {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 3rem;
+    font-weight: 900;
+}
+
+.status-label.pending {
+    background: rgba(255, 200, 0, 0.1);
+    color: #ffc800;
+    border: 1px solid #ffc800;
+}
+
+.status-label.approved {
+    background: rgba(0, 255, 136, 0.1);
+    color: #00ff88;
+    border: 1px solid #00ff88;
+}
+
+.status-label.rejected {
+    background: rgba(255, 0, 89, 0.1);
+    color: #ff0059;
+    border: 1px solid #ff0059;
+}
+
+.modal-footer-pop {
+    padding: 2.5rem 3rem;
+    background: #000;
+    border-top: 4px solid #000;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.action-btn-pop {
+    flex: 1;
+    padding: 1.5rem;
+    border-radius: 3rem;
+    font-size: 1.1rem;
+    font-weight: 950;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: 4px solid #000;
+    transition: all 0.3s ease;
+}
+
+.action-btn-pop.approve {
+    background: #f0ff00;
+    color: #000;
+    box-shadow: 8px 8px 0px #00d4ff;
+}
+
+.action-btn-pop.approve:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 11px 11px 0px #00d4ff;
+}
+
+.action-btn-pop.reject {
+    background: #111;
+    color: #ff0059;
+    border-color: #ff0059;
+}
+
+.action-btn-pop.reject:hover {
+    background: #ff0059;
+    color: #fff;
+    border-color: #000;
+}
+
+@media (max-width: 768px) {
+    .reg-person-brief {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    
+    .registration-data-card.compact {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .header-event-info h1 {
+        font-size: 2rem;
+    }
+}
+
+/* --- Manage Registrations Specific Overrides --- */
+.registrations-active .dashboard-left-panel {
+    padding-right: 1rem;
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.registrations-active .admin-profile-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+}
+
+.registrations-active .user-avatar-placeholder {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #000;
+    border: 3px solid #00d4ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #00d4ff;
+    font-weight: 950;
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+    box-shadow: 4px 4px 0px #000;
+}
+
+.registrations-active .user-name {
+    font-size: 2.5rem;
+    line-height: 0.9;
+    margin-bottom: 0.2rem;
+}
+
+.registrations-active .user-email {
+    margin: 0 0 2.5rem 0;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.registrations-active .nav-stack {
+    gap: 1.2rem;
+}
+
+.registrations-active .nav-cta-btn {
+    padding: 1.2rem 1.8rem;
+    border-width: 3px;
+    background: #0d0d0d;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.registrations-active .nav-cta-btn.active {
+    background: #f0ff00;
+    border-color: #000;
+    box-shadow: 6px 6px 0px #00d4ff;
+}
+
+.registrations-active .dashboard-right-panel {
+    padding: 4rem;
+}
+
+@keyframes slideInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.registrations-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    animation: slideInUp 0.5s ease-out;
+}
+/* Export Dropdown Styling */
+.export-dropdown {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    min-width: 250px;
+    background: #000;
+    border: 4px solid #000;
+    border-radius: 1.5rem;
+    box-shadow: 10px 10px 0px #00ff88;
+    z-index: 1000;
+    overflow: hidden;
+    animation: dropdownPop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes dropdownPop {
+    from { opacity: 0; transform: translateY(-10px) scale(0.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.export-option {
+    padding: 1.2rem 2rem;
+    color: #fff;
+    font-weight: 950;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-bottom: 2px solid #111;
+}
+
+.export-option:last-child {
+    border-bottom: none;
+}
+
+.export-option:hover {
+    background: #00ff88;
+    color: #000;
+}
+
+/* --- Checkbox Styling --- */
+.check-container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 25px;
+    cursor: pointer;
+    font-size: 22px;
+    user-select: none;
+}
+
+.check-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: transparent;
+    border: 3px solid #333;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.check-container:hover input ~ .checkmark {
+    border-color: #f0ff00;
+}
+
+.check-container input:checked ~ .checkmark {
+    background-color: #f0ff00;
+    border-color: #000;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.check-container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.check-container .checkmark:after {
+    left: 7px;
+    top: 3px;
+    width: 5px;
+    height: 10px;
+    border: solid #000;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}
+
+/* --- Selection Bar & Bulk Buttons --- */
+.bulk-btn {
+    padding: 0.8rem 1.5rem;
+    border-radius: 3rem;
+    font-weight: 950;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    cursor: pointer;
+    border: 3px solid #000;
+    transition: all 0.2s ease;
+}
+
+.bulk-btn.approve {
+    background: #f0ff00;
+    color: #000;
+    box-shadow: 4px 4px 0px #00d4ff;
+}
+
+.bulk-btn.reject {
+    background: #000;
+    color: #ff0059;
+    border-color: #ff0059;
+}
+
+.bulk-btn.delete {
+    background: #ff0059;
+    color: #fff;
+    box-shadow: 4px 4px 0px #000;
+}
+
+.bulk-btn:hover:not(:disabled) {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px #000;
+}
+
+.registration-data-card.selected {
+    border-color: #f0ff00;
+    background: rgba(240, 255, 0, 0.05);
+    transform: translateX(10px);
+}
+
+.action-btn-pop.delete-mini {
+    background: #111;
+    color: #ff0059;
+    border-color: #333;
+    font-size: 1.5rem !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.action-btn-pop.delete-mini:hover {
+    background: #ff0059;
+    color: #fff;
+    border-color: #000;
+}
+

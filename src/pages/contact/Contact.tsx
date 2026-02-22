@@ -1,10 +1,36 @@
 import React, { useState } from 'react';
 import { useToast } from '../../components/toast/Toast';
+import SEO from '../../components/navigation/SEO';
 import { assetPath } from '../../utils/assetPath';
 import './Contact.css';
 
 const Contact: React.FC = () => {
     const { showToast } = useToast();
+    const contactSchema = {
+        "@context": "https://schema.org",
+        "@type": "ContactPage",
+        "name": "Contact Talentron",
+        "description": "Have questions about Talentron '26? Get in touch with our team via email, phone, or visit us at Zeal College, Pune.",
+        "mainEntity": {
+            "@type": "Organization",
+            "name": "Talentron",
+            "contactPoint": [
+                {
+                    "@type": "ContactPoint",
+                    "telephone": "+91-98765-43210",
+                    "contactType": "customer service",
+                    "email": "support@talentron.com"
+                }
+            ],
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Narhe",
+                "addressLocality": "Pune",
+                "postalCode": "411041",
+                "addressCountry": "IN"
+            }
+        }
+    };
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -40,6 +66,12 @@ const Contact: React.FC = () => {
 
     return (
         <div className="contact-page">
+            <SEO 
+                title="Contact Us — We're Here to Help"
+                description="Get in touch with the Talentron team for any queries regarding event registrations, schedules, or sponsorships. Join our community on Instagram and WhatsApp."
+                keywords="contact Talentron, Zeal College contact, Pune college fest support, Talentron location"
+                schema={contactSchema}
+            />
             <div className="contact-header">
                 <p className="contact-subtitle">Get In Touch</p>
                 <h1 className="contact-title">Contact Us</h1>
